@@ -2,7 +2,7 @@ import { Stack } from "expo-router";
 import { useEffect, useMemo } from "react";
 import { SplashScreen } from "expo-router";
 import { Provider as PaperProvider } from "react-native-paper";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
 import { AppProvider, useAppBootstrap } from "@/context/AppContext";
 import theme from "@/utils/theme";
@@ -12,7 +12,8 @@ SplashScreen.preventAutoHideAsync();
 function AppShell() {
   const { ready: stateReady } = useAppBootstrap();
   const [fontsLoaded] = useFonts({
-    ...MaterialCommunityIcons.font
+    ...MaterialCommunityIcons.font,
+    ...MaterialIcons.font
   });
   const ready = stateReady && fontsLoaded;
 
