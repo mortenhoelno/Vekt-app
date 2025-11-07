@@ -1,4 +1,7 @@
 import { Stack } from "expo-router";
+import { useEffect } from "react";
+import { SplashScreen } from "expo-router";
+import { Provider as PaperProvider } from "react-native-paper";
 import { useEffect, useMemo } from "react";
 import { SplashScreen } from "expo-router";
 import { Provider as PaperProvider } from "react-native-paper";
@@ -10,6 +13,7 @@ import theme from "@/utils/theme";
 SplashScreen.preventAutoHideAsync();
 
 function AppShell() {
+  const { ready } = useAppBootstrap();
   const { ready: stateReady } = useAppBootstrap();
   const [fontsLoaded] = useFonts({
     ...MaterialCommunityIcons.font,
@@ -31,6 +35,8 @@ function AppShell() {
 }
 
 export default function Layout() {
+  return (
+    <PaperProvider theme={theme}>
   const paperSettings = useMemo(
     () => ({
       icon: (props: { name: string; color: string; size: number }) => (
